@@ -3,84 +3,140 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MRC — CloudStream Türkçe Eklenti Deposu</title>
+<title>MRC — CloudStream Türkçe Eklentiler</title>
 <style>
-  :root { --bg:#0d1117; --card:#161b22; --line:#30363d; --txt:#e6edf3; --dim:#8b949e; --acc:#2f81f7; --ok:#3fb950; --bad:#f85149; --warn:#d29922; }
-  * { box-sizing:border-box; }
-  body { margin:0; background:var(--bg); color:var(--txt); font-family:-apple-system,"Segoe UI",Roboto,Arial,sans-serif; line-height:1.6; }
-  .wrap { max-width:960px; margin:0 auto; padding:24px 16px 64px; }
-  header { text-align:center; padding:36px 0 12px; }
-  header h1 { margin:0; font-size:2rem; }
-  header p { color:var(--dim); margin:8px 0 0; }
-  .card { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:20px; margin:20px 0; }
-  .card h2 { margin-top:0; font-size:1.25rem; }
-  code, .mono { background:#0d1117; border:1px solid var(--line); border-radius:6px; padding:2px 8px; font-size:.9em; word-break:break-all; }
-  ol.steps li { margin:8px 0; }
-  table { width:100%; border-collapse:collapse; font-size:.92rem; }
-  th, td { text-align:left; padding:8px 10px; border-bottom:1px solid var(--line); }
-  th { color:var(--dim); font-weight:600; }
-  .pill { display:inline-block; padding:1px 10px; border-radius:999px; font-size:.8em; font-weight:600; }
-  .ok { background:rgba(63,185,80,.15); color:var(--ok); }
-  .bad { background:rgba(248,81,73,.15); color:var(--bad); }
-  label { display:block; margin:12px 0 4px; font-weight:600; }
-  input, select, textarea { width:100%; background:#0d1117; border:1px solid var(--line); color:var(--txt); border-radius:8px; padding:10px 12px; font-size:1rem; font-family:inherit; }
-  textarea { min-height:120px; resize:vertical; }
-  button.send { background:var(--acc); color:#fff; border:0; border-radius:8px; padding:12px 24px; font-size:1rem; font-weight:700; cursor:pointer; margin-top:14px; width:100%; }
-  button.send:disabled { opacity:.6; cursor:wait; }
-  #formSonuc { margin-top:12px; font-weight:600; }
-  footer { text-align:center; color:var(--dim); font-size:.85rem; margin-top:32px; }
-  .filters { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px; }
-  .filters button { background:#0d1117; color:var(--txt); border:1px solid var(--line); border-radius:999px; padding:6px 14px; cursor:pointer; }
-  .filters button.secili { background:var(--acc); border-color:var(--acc); color:#fff; }
+  :root{
+    --zemin:#101014; --kutu:#17171d; --cizgi:#2a2a33;
+    --yazi:#ece7dd; --soluk:#a09a8d; --vurgu:#e8a33d; --vurgu-koyu:#b97a1f;
+    --yesil:#7fc97f; --kirmizi:#e0705f;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--zemin);color:var(--yazi);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    line-height:1.65}
+  .ust{border-bottom:1px solid var(--cizgi);position:sticky;top:0;background:rgba(16,16,20,.94);z-index:10}
+  .ust-ic{max-width:980px;margin:0 auto;padding:12px 18px;display:flex;align-items:center;gap:12px}
+  .logo{width:34px;height:34px;border-radius:9px;background:var(--vurgu);color:#141414;
+    display:flex;align-items:center;justify-content:center;font-family:Georgia,serif;font-weight:bold;font-size:20px}
+  .ust-ic b{font-size:1.05rem}
+  .ust-ic nav{margin-left:auto;display:flex;gap:16px;font-size:.92rem}
+  .ust-ic nav a{color:var(--soluk);text-decoration:none}
+  .ust-ic nav a:hover{color:var(--yazi)}
+  .govde{max-width:980px;margin:0 auto;padding:0 18px 70px}
+  .giris{padding:56px 0 10px}
+  .giris .etiket{display:inline-block;border:1px solid var(--cizgi);border-radius:999px;
+    padding:3px 14px;font-size:.82rem;color:var(--soluk);margin-bottom:14px}
+  .giris h1{font-family:Georgia,"Times New Roman",serif;font-weight:400;
+    font-size:clamp(2rem,5vw,3.1rem);line-height:1.2;margin:0 0 12px}
+  .giris h1 em{font-style:italic;color:var(--vurgu)}
+  .giris p{color:var(--soluk);max-width:640px;margin:0}
+  section{margin-top:44px}
+  section h2{font-family:Georgia,serif;font-weight:400;font-size:1.6rem;margin:0 0 4px}
+  section .alt{color:var(--soluk);margin:0 0 18px;font-size:.95rem}
+  .kutu{background:var(--kutu);border:1px solid var(--cizgi);border-radius:14px;padding:22px}
+  ol.adim{margin:0;padding:0;list-style:none;counter-reset:a}
+  ol.adim li{counter-increment:a;display:flex;gap:14px;margin:16px 0;align-items:flex-start}
+  ol.adim li::before{content:counter(a);flex:0 0 30px;height:30px;border-radius:50%;
+    border:1px solid var(--vurgu);color:var(--vurgu);display:flex;align-items:center;
+    justify-content:center;font-size:.9rem;margin-top:2px}
+  .adres{background:#0b0b0e;border:1px dashed var(--cizgi);border-radius:8px;
+    padding:10px 12px;margin-top:8px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+  .adres code{font-size:.85rem;word-break:break-all;flex:1;min-width:200px;color:var(--yazi)}
+  .kopya{background:transparent;border:1px solid var(--cizgi);color:var(--yazi);
+    border-radius:7px;padding:6px 12px;cursor:pointer;font-size:.85rem;white-space:nowrap}
+  .kopya:hover{border-color:var(--vurgu);color:var(--vurgu)}
+  .not{border-left:3px solid var(--vurgu);padding:6px 0 6px 14px;color:var(--soluk);
+    font-size:.92rem;margin-top:14px}
+  .not b{color:var(--yazi)}
+  table{width:100%;border-collapse:collapse;font-size:.93rem}
+  th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--cizgi)}
+  th{color:var(--soluk);font-weight:600;font-size:.85rem;text-transform:uppercase;letter-spacing:.04em}
+  .durum{font-size:.82rem;font-weight:700;padding:2px 11px;border-radius:999px;white-space:nowrap}
+  .acik{background:rgba(127,201,127,.13);color:var(--yesil)}
+  .kapali{background:rgba(224,112,95,.13);color:var(--kirmizi)}
+  .suzgec{display:flex;gap:8px;margin-bottom:6px;flex-wrap:wrap}
+  .suzgec button{background:transparent;color:var(--soluk);border:1px solid var(--cizgi);
+    border-radius:999px;padding:6px 16px;cursor:pointer;font-size:.88rem}
+  .suzgec button.secili{background:var(--vurgu);border-color:var(--vurgu);color:#141414;font-weight:700}
+  .duyuru{border-bottom:1px dashed var(--cizgi);padding:12px 2px}
+  .duyuru:last-child{border-bottom:0}
+  .duyuru .tarih{color:var(--soluk);font-size:.82rem}
+  label{display:block;margin:14px 0 5px;font-weight:600;font-size:.95rem}
+  input,select,textarea{width:100%;background:#0b0b0e;border:1px solid var(--cizgi);
+    color:var(--yazi);border-radius:9px;padding:11px 13px;font-size:1rem;font-family:inherit}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--vurgu)}
+  textarea{min-height:130px;resize:vertical}
+  button.gonder{background:var(--vurgu);color:#141414;border:0;border-radius:10px;
+    padding:13px;font-size:1.02rem;font-weight:800;cursor:pointer;margin-top:16px;width:100%}
+  button.gonder:hover{background:#f2b04d}
+  button.gonder:disabled{opacity:.6;cursor:wait}
+  #formSonuc{margin-top:12px;font-weight:600}
+  footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--cizgi);
+    color:var(--soluk);font-size:.86rem;display:flex;gap:8px;flex-wrap:wrap;justify-content:space-between}
+  @media(max-width:640px){.ust-ic nav{display:none}}
 </style>
 </head>
 <body>
-<div class="wrap">
 
-<header>
-  <h1>MRC Eklenti Deposu</h1>
-  <p>CloudStream için Türkçe film, dizi ve anime eklentileri</p>
-</header>
+<div class="ust"><div class="ust-ic">
+  <div class="logo">M</div><b>MRC Eklentileri</b>
+  <nav><a href="#kurulum">Kurulum</a><a href="#durum">Durum</a><a href="#duyuru">Duyurular</a><a href="#bildir">Bildirim</a></nav>
+</div></div>
 
-<div class="card">
+<div class="govde">
+
+<div class="giris">
+  <span class="etiket">CloudStream 4.8.0 uyumlu</span>
+  <h1>Türkçe dizi, film ve anime <em>tek depoda.</em></h1>
+  <p>57 eklenti, herkese açık, ücretsiz. Aşağıdan depoyu ekle, istediklerini kur. Bozulan olursa bildir, bakalım.</p>
+</div>
+
+<section id="kurulum">
   <h2>Kurulum</h2>
-  <ol class="steps">
-    <li>CloudStream → Ayarlar → Eklentiler → <b>Depo Ekle</b></li>
-    <li>Kısa kod olarak <span class="mono">mrc-cs</span> yaz <b>veya</b> şu adresi yapıştır:<br>
-      <span class="mono">https://raw.githubusercontent.com/lepotane/MRC-builds/builds/repo.json</span></li>
-    <li>Listeden istediğin eklentiyi indir.</li>
+  <p class="alt">Bir dakikanı almaz.</p>
+  <div class="kutu"><ol class="adim">
+    <li><div><a href="https://github.com/recloudstream/cloudstream/releases/tag/v4.8.0" style="color:var(--vurgu)">CloudStream</a> uygulamasını kur (4.8.0 ve üzeri).</div></li>
+    <li><div>Uygulamada <b>Ayarlar → Eklentiler → Depo Ekle</b> bölümüne gir.</div></li>
+    <li><div><b>Depo ismi</b> kısmını boş bırak, <b>Depo URL'si</b> kısmına şunu yapıştır:
+      <div class="adres"><code id="repoUrl">https://raw.githubusercontent.com/lepotane/MRC-builds/builds/repo.json</code><button class="kopya" data-kopya="repoUrl">Kopyala</button></div>
+    </div></li>
+    <li><div>Depo eklendikten sonra listeden istediğin eklentiyi kur. Güncellemeler otomatik gelir.</div></li>
   </ol>
-</div>
-
-<div class="card">
-  <h2>Durum</h2>
-  <p id="ozet" style="color:var(--dim)">Yükleniyor…</p>
-  <div class="filters">
-    <button data-f="hepsi" class="secili">Tümü</button>
-    <button data-f="aktif">Çalışanlar</button>
-    <button data-f="pasif">Bakımda</button>
+  <div class="not"><b>Kısa kodlar:</b> <code>mrc-cs</code> (stabilde çalışır) ve <code>!mrc-cs</code> (sadece beta sürümlerde). URL ile eklemek her zaman en garantisidir — kısa kod çalışmazsa URL'yi dene.</div>
   </div>
-  <div style="overflow-x:auto">
-  <table>
-    <thead><tr><th>Eklenti</th><th>İçerik</th><th>Sürüm</th><th>Durum</th></tr></thead>
-    <tbody id="tablo"><tr><td colspan="4">Yükleniyor…</td></tr></tbody>
-  </table>
-  </div>
-</div>
+</section>
 
-<div class="card">
+<section id="durum">
+  <h2>Eklenti durumu</h2>
+  <p class="alt" id="ozet">Yükleniyor…</p>
+  <div class="kutu">
+    <div class="suzgec">
+      <button data-f="hepsi" class="secili">Tümü</button>
+      <button data-f="aktif">Çalışanlar</button>
+      <button data-f="pasif">Bakımda</button>
+    </div>
+    <div style="overflow-x:auto"><table>
+      <thead><tr><th>Eklenti</th><th>İçerik</th><th>Sürüm</th><th>Durum</th></tr></thead>
+      <tbody id="tablo"><tr><td colspan="4">Yükleniyor…</td></tr></tbody>
+    </table></div>
+  </div>
+</section>
+
+<section id="duyuru">
   <h2>Duyurular</h2>
-  <ul>
-    <li><b>Bozuk eklentiler bakıma alındı:</b> sorunlu siteler tek tek düzeltilip yeniden açılıyor. Güncel liste: <span id="bakimListe">yükleniyor…</span></li>
-    <li><b>AsyaLog ve DDizi düzeltildi</b> — güncel sürüme geçmeyi unutma.</li>
-    <li>Site adresi değişen eklentiler her 6 saatte bir otomatik kontrol ediliyor.</li>
-  </ul>
-</div>
+  <p class="alt">Bakım listesi otomatik güncellenir.</p>
+  <div class="kutu">
+    <div class="duyuru"><span class="tarih">Bakımda olanlar:</span><br><span id="bakimListe">yükleniyor…</span></div>
+    <div class="duyuru"><span class="tarih">Son düzeltmeler</span><br>AsyaLog ve DDizi düzeltildi — eklentiyi güncelleyip tekrar dene.</div>
+    <div class="duyuru"><span class="tarih">Otomatik takip</span><br>Site adresi değişen eklentiler her 6 saatte bir kontrol edilip sessizce güncelleniyor.</div>
+  </div>
+</section>
 
-<div class="card">
-  <h2>Bildirim Gönder</h2>
-  <p style="color:var(--dim)">Öneri, arıza, şikayet veya çalışmayan video bildir. Kayıt gerekmez, mesaj doğrudan bize ulaşır, sitede yayınlanmaz.</p>
-  <form id="form">
+<section id="bildir">
+  <h2>Bildirim gönder</h2>
+  <p class="alt">Kayıt falan yok. Yaz, gönder, biz bakalım. Burada yayınlanmaz.</p>
+  <div class="kutu"><form id="form">
     <label for="tur">Konu</label>
     <select id="tur">
       <option>Arıza / Çalışmayan video</option>
@@ -88,81 +144,85 @@
       <option>Şikayet</option>
       <option>Diğer</option>
     </select>
-    <label for="eklenti">Eklenti (hangisiyle ilgili?)</label>
-    <input id="eklenti" placeholder="örn. DDizi">
-    <label for="mesaj">Mesajın</label>
-    <textarea id="mesaj" required placeholder="Ne oldu, hangi dizi/bölüm, ne hatası aldın?"></textarea>
-    <button class="send" type="submit" id="gonderBtn">Gönder</button>
+    <label for="eklenti">Hangi eklenti?</label>
+    <input id="eklenti" list="eklentiListe" placeholder="örn. DDizi" autocomplete="off">
+    <datalist id="eklentiListe"></datalist>
+    <label for="mesaj">Ne oldu?</label>
+    <textarea id="mesaj" required placeholder="Hangi dizi, hangi bölüm, ne hatası aldın? Ne kadar detay o kadar hızlı çözüm."></textarea>
+    <button class="gonder" type="submit" id="gonderBtn">Gönder</button>
     <div id="formSonuc"></div>
-  </form>
-</div>
+  </form></div>
+</section>
 
-<footer>MRC — içerik barındırmaz, herkese açık sitelere bağlanır.</footer>
+<footer><span>MRC — video barındırmaz, açık sitelere bağlanır.</span><span>Sorun mu var? Yukarıdaki formdan yaz.</span></footer>
 </div>
 
 <script>
 var PLUGINS_URL = "https://raw.githubusercontent.com/lepotane/MRC-builds/builds/plugins.json";
 var TELEGRAM_TOKEN = "8794099684:AAG8Gx10FMydWmjqHUmQq5okHpfleYzWk94";
 var TELEGRAM_CHAT = "5840499361";
-var veri = [];
-var filtre = "hepsi";
+/* Konu bazlı ayrı Telegram başlıkları (Topics) istenirse:
+   1) Telegram'da bir grup aç, Konular'ı (Topics) etkinleştir.
+   2) Botu gruba ekle, şu başlıkları aç: Arıza, Öneri, Şikayet, Diğer.
+   3) Her başlığın ID'sini (Genel=1) aşağıya yaz, TELEGRAM_CHAT'e grup ID'sini (eksi sayılı) yaz. */
+var KONU_BASLIK = {"Arıza / Çalışmayan video":0, "Öneri":0, "Şikayet":0, "Diğer":0};
+var veri = [], filtre = "hepsi";
 
-function icerikAd(tv) {
-  var m = {Movie:"Film",TvSeries:"Dizi",Anime:"Anime",AnimeMovie:"Anime Film",Cartoon:"Çizgi",AsianDrama:"Asya Dizisi",Documentary:"Belgesel",Live:"Canlı",Torrent:"Torrent",NSFW:"+18",OVA:"OVA",Others:"Diğer",Music:"Müzik"};
-  var g = [];
-  (tv||[]).forEach(function(t){ var a = m[t]||t; if (g.indexOf(a)<0) g.push(a); });
-  return g.slice(0,3).join(" + ") || "Karma";
+function icerikAd(tv){
+  var m={Movie:"Film",TvSeries:"Dizi",Anime:"Anime",AnimeMovie:"Anime Film",Cartoon:"Çizgi",AsianDrama:"Asya Dizisi",Documentary:"Belgesel",Live:"Canlı",Torrent:"Torrent",NSFW:"+18",OVA:"OVA",Others:"Diğer",Music:"Müzik"};
+  var g=[];(tv||[]).forEach(function(t){var a=m[t]||t;if(g.indexOf(a)<0)g.push(a)});
+  return g.slice(0,3).join(" + ")||"Karma";
 }
-
-function ciz() {
-  var tb = document.getElementById("tablo");
-  var satir = "";
-  var a=0, p=0;
+function ciz(){
+  var tb=document.getElementById("tablo"), s="", a=0, p=0;
   veri.forEach(function(e){
-    var aktif = e.status === 1;
-    if (aktif) a++; else p++;
-    if (filtre==="aktif" && !aktif) return;
-    if (filtre==="pasif" && aktif) return;
-    satir += "<tr><td><b>"+e.name+"</b></td><td>"+icerikAd(e.tvTypes)+"</td><td>v"+e.version+"</td><td>"+
-      (aktif ? '<span class="pill ok">Çalışıyor</span>' : '<span class="pill bad">Bakımda</span>')+"</td></tr>";
+    var ok=e.status===1; if(ok)a++;else p++;
+    if(filtre==="aktif"&&!ok)return; if(filtre==="pasif"&&ok)return;
+    s+="<tr><td><b>"+e.name+"</b></td><td>"+icerikAd(e.tvTypes)+"</td><td>v"+e.version+"</td><td>"+
+      (ok?'<span class="durum acik">Çalışıyor</span>':'<span class="durum kapali">Bakımda</span>')+"</td></tr>";
   });
-  tb.innerHTML = satir || '<tr><td colspan="4">Kayıt yok.</td></tr>';
-  document.getElementById("ozet").textContent = veri.length+" eklenti: "+a+" çalışıyor, "+p+" bakımda.";
-  var bakim = veri.filter(function(e){return e.status!==1}).map(function(e){return e.name});
-  var bl = document.getElementById("bakimListe");
-  if (bl) bl.textContent = bakim.length ? bakim.join(", ")+" ("+bakim.length+" eklenti bakımda)" : "şu an bakımda eklenti yok.";
+  tb.innerHTML=s||'<tr><td colspan="4">Kayıt yok.</td></tr>';
+  document.getElementById("ozet").textContent=veri.length+" eklenti: "+a+" çalışıyor, "+p+" bakımda.";
+  var b=veri.filter(function(e){return e.status!==1}).map(function(e){return e.name});
+  document.getElementById("bakimListe").textContent=b.length?b.join(", ")+" ("+b.length+" eklenti)":"şu an bakımda eklenti yok.";
+  var dl=document.getElementById("eklentiListe");
+  dl.innerHTML=veri.map(function(e){return "<option value=\""+e.name+"\">"}).join("");
 }
-
-document.querySelectorAll(".filters button").forEach(function(b){
-  b.onclick = function(){
-    document.querySelectorAll(".filters button").forEach(function(x){x.classList.remove("secili")});
-    b.classList.add("secili"); filtre = b.getAttribute("data-f"); ciz();
+document.querySelectorAll(".suzgec button").forEach(function(b){
+  b.onclick=function(){
+    document.querySelectorAll(".suzgec button").forEach(function(x){x.classList.remove("secili")});
+    b.classList.add("secili"); filtre=b.getAttribute("data-f"); ciz();
   };
 });
-
-fetch(PLUGINS_URL).then(function(r){return r.json()}).then(function(d){
-  veri = d.sort(function(x,y){return (x.name||"").localeCompare(y.name||"")});
-  ciz();
-}).catch(function(){
-  document.getElementById("tablo").innerHTML = '<tr><td colspan="4">Liste yüklenemedi, sonra tekrar dene.</td></tr>';
-  document.getElementById("ozet").textContent = "";
+document.querySelectorAll("[data-kopya]").forEach(function(b){
+  b.onclick=function(){
+    var t=document.getElementById(b.getAttribute("data-kopya")).textContent;
+    function ok(){b.textContent="Kopyalandı";setTimeout(function(){b.textContent="Kopyala"},1500)}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok).catch(function(){b.textContent=t})}
+    else{var ta=document.createElement("textarea");ta.value=t;document.body.appendChild(ta);ta.select();try{document.execCommand("copy");ok()}catch(e){}document.body.removeChild(ta)}
+  };
 });
-
-document.getElementById("form").addEventListener("submit", function(ev){
+fetch(PLUGINS_URL).then(function(r){return r.json()}).then(function(d){
+  veri=d.sort(function(x,y){return (x.name||"").localeCompare(y.name||"")}); ciz();
+}).catch(function(){
+  document.getElementById("tablo").innerHTML='<tr><td colspan="4">Liste yüklenemedi, sonra tekrar dene.</td></tr>';
+});
+document.getElementById("form").addEventListener("submit",function(ev){
   ev.preventDefault();
-  var sonuc = document.getElementById("formSonuc");
-  var btn = document.getElementById("gonderBtn");
-  var metin = "【"+document.getElementById("tur").value+"】\nEklenti: "+(document.getElementById("eklenti").value||"-")+"\n"+document.getElementById("mesaj").value;
-  if (TELEGRAM_TOKEN.indexOf("BURAYA")===0) { sonuc.style.color="#f85149"; sonuc.textContent="Bildirim servisi henüz bağlanmadı."; return; }
-  btn.disabled = true; btn.textContent = "Gönderiliyor…";
-  fetch("https://api.telegram.org/bot"+TELEGRAM_TOKEN+"/sendMessage", {
-    method:"POST", headers:{"Content-Type":"application/json"},
-    body: JSON.stringify({chat_id:TELEGRAM_CHAT, text:metin})
+  var sonuc=document.getElementById("formSonuc"), btn=document.getElementById("gonderBtn");
+  var tur=document.getElementById("tur").value;
+  var metin="["+tur+"]\nEklenti: "+(document.getElementById("eklenti").value||"-")+"\n"+document.getElementById("mesaj").value;
+  btn.disabled=true; btn.textContent="Gönderiliyor…";
+  var govde={chat_id:TELEGRAM_CHAT,text:metin};
+  var baslik=KONU_BASLIK[tur]||0;
+  if(baslik>0) govde.message_thread_id=baslik;
+  fetch("https://api.telegram.org/bot"+TELEGRAM_TOKEN+"/sendMessage",{
+    method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(govde)
   }).then(function(r){return r.json()}).then(function(j){
-    if (j.ok) { sonuc.style.color="#3fb950"; sonuc.textContent="Alındı, teşekkürler!"; document.getElementById("form").reset(); }
-    else { sonuc.style.color="#f85149"; sonuc.textContent="Gönderilemedi, sonra tekrar dene."; }
-  }).catch(function(){ sonuc.style.color="#f85149"; sonuc.textContent="Bağlantı hatası."; })
-  .finally(function(){ btn.disabled=false; btn.textContent="Gönder"; });
+    if(j.ok){sonuc.style.color="#7fc97f";sonuc.textContent="Aldık, bakacağız. Teşekkürler.";document.getElementById("form").reset()}
+    else{sonuc.style.color="#e0705f";sonuc.textContent="Gönderilemedi, sonra tekrar dene."}
+  }).catch(function(){sonuc.style.color="#e0705f";sonuc.textContent="Bağlantı hatası."})
+  .finally(function(){btn.disabled=false;btn.textContent="Gönder"});
 });
 </script>
 </body>
