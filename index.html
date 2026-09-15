@@ -71,7 +71,7 @@
 <div class="card">
   <h2>Duyurular</h2>
   <ul>
-    <li><b>Bozuk eklentiler bakıma alındı:</b> sorunlu siteler tek tek düzeltilip yeniden açılıyor. Bitene kadar listede "Bakımda" görünürler.</li>
+    <li><b>Bozuk eklentiler bakıma alındı:</b> sorunlu siteler tek tek düzeltilip yeniden açılıyor. Güncel liste: <span id="bakimListe">yükleniyor…</span></li>
     <li><b>AsyaLog ve DDizi düzeltildi</b> — güncel sürüme geçmeyi unutma.</li>
     <li>Site adresi değişen eklentiler her 6 saatte bir otomatik kontrol ediliyor.</li>
   </ul>
@@ -102,7 +102,7 @@
 
 <script>
 var PLUGINS_URL = "https://raw.githubusercontent.com/lepotane/MRC-builds/builds/plugins.json";
-var TELEGRAM_TOKEN = "BURAYA_BOT_TOKEN";
+var TELEGRAM_TOKEN = "8794099684:AAG8Gx10FMydWmjqHUmQq5okHpfleYzWk94";
 var TELEGRAM_CHAT = "BURAYA_CHAT_ID";
 var veri = [];
 var filtre = "hepsi";
@@ -128,6 +128,9 @@ function ciz() {
   });
   tb.innerHTML = satir || '<tr><td colspan="4">Kayıt yok.</td></tr>';
   document.getElementById("ozet").textContent = veri.length+" eklenti: "+a+" çalışıyor, "+p+" bakımda.";
+  var bakim = veri.filter(function(e){return e.status!==1}).map(function(e){return e.name});
+  var bl = document.getElementById("bakimListe");
+  if (bl) bl.textContent = bakim.length ? bakim.join(", ")+" ("+bakim.length+" eklenti bakımda)" : "şu an bakımda eklenti yok.";
 }
 
 document.querySelectorAll(".filters button").forEach(function(b){
