@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MRC — CloudStream Türkçe Eklenti Deposu</title>
+<style>
+  :root { --bg:#0d1117; --card:#161b22; --line:#30363d; --txt:#e6edf3; --dim:#8b949e; --acc:#2f81f7; --ok:#3fb950; --bad:#f85149; --warn:#d29922; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--txt); font-family:-apple-system,"Segoe UI",Roboto,Arial,sans-serif; line-height:1.6; }
+  .wrap { max-width:960px; margin:0 auto; padding:24px 16px 64px; }
+  header { text-align:center; padding:36px 0 12px; }
+  header h1 { margin:0; font-size:2rem; }
+  header p { color:var(--dim); margin:8px 0 0; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:20px; margin:20px 0; }
+  .card h2 { margin-top:0; font-size:1.25rem; }
+  code, .mono { background:#0d1117; border:1px solid var(--line); border-radius:6px; padding:2px 8px; font-size:.9em; word-break:break-all; }
+  ol.steps li { margin:8px 0; }
+  table { width:100%; border-collapse:collapse; font-size:.92rem; }
+  th, td { text-align:left; padding:8px 10px; border-bottom:1px solid var(--line); }
+  th { color:var(--dim); font-weight:600; }
+  .pill { display:inline-block; padding:1px 10px; border-radius:999px; font-size:.8em; font-weight:600; }
+  .ok { background:rgba(63,185,80,.15); color:var(--ok); }
+  .bad { background:rgba(248,81,73,.15); color:var(--bad); }
+  label { display:block; margin:12px 0 4px; font-weight:600; }
+  input, select, textarea { width:100%; background:#0d1117; border:1px solid var(--line); color:var(--txt); border-radius:8px; padding:10px 12px; font-size:1rem; font-family:inherit; }
+  textarea { min-height:120px; resize:vertical; }
+  button.send { background:var(--acc); color:#fff; border:0; border-radius:8px; padding:12px 24px; font-size:1rem; font-weight:700; cursor:pointer; margin-top:14px; width:100%; }
+  button.send:disabled { opacity:.6; cursor:wait; }
+  #formSonuc { margin-top:12px; font-weight:600; }
+  footer { text-align:center; color:var(--dim); font-size:.85rem; margin-top:32px; }
+  .filters { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px; }
+  .filters button { background:#0d1117; color:var(--txt); border:1px solid var(--line); border-radius:999px; padding:6px 14px; cursor:pointer; }
+  .filters button.secili { background:var(--acc); border-color:var(--acc); color:#fff; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>MRC Eklenti Deposu</h1>
+  <p>CloudStream için Türkçe film, dizi ve anime eklentileri</p>
+</header>
+
+<div class="card">
+  <h2>Kurulum</h2>
+  <ol class="steps">
+    <li>CloudStream → Ayarlar → Eklentiler → <b>Depo Ekle</b></li>
+    <li>Kısa kod olarak <span class="mono">mrc-cs</span> yaz <b>veya</b> şu adresi yapıştır:<br>
+      <span class="mono">https://raw.githubusercontent.com/lepotane/MRC-builds/builds/repo.json</span></li>
+    <li>Listeden istediğin eklentiyi indir.</li>
+  </ol>
+</div>
+
+<div class="card">
+  <h2>Durum</h2>
+  <p id="ozet" style="color:var(--dim)">Yükleniyor…</p>
+  <div class="filters">
+    <button data-f="hepsi" class="secili">Tümü</button>
+    <button data-f="aktif">Çalışanlar</button>
+    <button data-f="pasif">Bakımda</button>
+  </div>
+  <div style="overflow-x:auto">
+  <table>
+    <thead><tr><th>Eklenti</th><th>İçerik</th><th>Sürüm</th><th>Durum</th></tr></thead>
+    <tbody id="tablo"><tr><td colspan="4">Yükleniyor…</td></tr></tbody>
+  </table>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Duyurular</h2>
+  <ul>
+    <li><b>Bozuk eklentiler bakıma alındı:</b> sorunlu siteler tek tek düzeltilip yeniden açılıyor. Bitene kadar listede "Bakımda" görünürler.</li>
+    <li><b>AsyaLog ve DDizi düzeltildi</b> — güncel sürüme geçmeyi unutma.</li>
+    <li>Site adresi değişen eklentiler her 6 saatte bir otomatik kontrol ediliyor.</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h2>Bildirim Gönder</h2>
+  <p style="color:var(--dim)">Öneri, arıza, şikayet veya çalışmayan video bildir. Kayıt gerekmez, mesaj doğrudan bize ulaşır, sitede yayınlanmaz.</p>
+  <form id="form">
+    <label for="tur">Konu</label>
+    <select id="tur">
+      <option>Arıza / Çalışmayan video</option>
+      <option>Öneri</option>
+      <option>Şikayet</option>
+      <option>Diğer</option>
+    </select>
+    <label for="eklenti">Eklenti (hangisiyle ilgili?)</label>
+    <input id="eklenti" placeholder="örn. DDizi">
+    <label for="mesaj">Mesajın</label>
+    <textarea id="mesaj" required placeholder="Ne oldu, hangi dizi/bölüm, ne hatası aldın?"></textarea>
+    <button class="send" type="submit" id="gonderBtn">Gönder</button>
+    <div id="formSonuc"></div>
+  </form>
+</div>
+
+<footer>MRC — içerik barındırmaz, herkese açık sitelere bağlanır.</footer>
+</div>
+
+<script>
+var PLUGINS_URL = "https://raw.githubusercontent.com/lepotane/MRC-builds/builds/plugins.json";
+var TELEGRAM_TOKEN = "BURAYA_BOT_TOKEN";
+var TELEGRAM_CHAT = "BURAYA_CHAT_ID";
+var veri = [];
+var filtre = "hepsi";
+
+function icerikAd(tv) {
+  var m = {Movie:"Film",TvSeries:"Dizi",Anime:"Anime",AnimeMovie:"Anime Film",Cartoon:"Çizgi",AsianDrama:"Asya Dizisi",Documentary:"Belgesel",Live:"Canlı",Torrent:"Torrent",NSFW:"+18",OVA:"OVA",Others:"Diğer",Music:"Müzik"};
+  var g = [];
+  (tv||[]).forEach(function(t){ var a = m[t]||t; if (g.indexOf(a)<0) g.push(a); });
+  return g.slice(0,3).join(" + ") || "Karma";
+}
+
+function ciz() {
+  var tb = document.getElementById("tablo");
+  var satir = "";
+  var a=0, p=0;
+  veri.forEach(function(e){
+    var aktif = e.status === 1;
+    if (aktif) a++; else p++;
+    if (filtre==="aktif" && !aktif) return;
+    if (filtre==="pasif" && aktif) return;
+    satir += "<tr><td><b>"+e.name+"</b></td><td>"+icerikAd(e.tvTypes)+"</td><td>v"+e.version+"</td><td>"+
+      (aktif ? '<span class="pill ok">Çalışıyor</span>' : '<span class="pill bad">Bakımda</span>')+"</td></tr>";
+  });
+  tb.innerHTML = satir || '<tr><td colspan="4">Kayıt yok.</td></tr>';
+  document.getElementById("ozet").textContent = veri.length+" eklenti: "+a+" çalışıyor, "+p+" bakımda.";
+}
+
+document.querySelectorAll(".filters button").forEach(function(b){
+  b.onclick = function(){
+    document.querySelectorAll(".filters button").forEach(function(x){x.classList.remove("secili")});
+    b.classList.add("secili"); filtre = b.getAttribute("data-f"); ciz();
+  };
+});
+
+fetch(PLUGINS_URL).then(function(r){return r.json()}).then(function(d){
+  veri = d.sort(function(x,y){return (x.name||"").localeCompare(y.name||"")});
+  ciz();
+}).catch(function(){
+  document.getElementById("tablo").innerHTML = '<tr><td colspan="4">Liste yüklenemedi, sonra tekrar dene.</td></tr>';
+  document.getElementById("ozet").textContent = "";
+});
+
+document.getElementById("form").addEventListener("submit", function(ev){
+  ev.preventDefault();
+  var sonuc = document.getElementById("formSonuc");
+  var btn = document.getElementById("gonderBtn");
+  var metin = "【"+document.getElementById("tur").value+"】\nEklenti: "+(document.getElementById("eklenti").value||"-")+"\n"+document.getElementById("mesaj").value;
+  if (TELEGRAM_TOKEN.indexOf("BURAYA")===0) { sonuc.style.color="#f85149"; sonuc.textContent="Bildirim servisi henüz bağlanmadı."; return; }
+  btn.disabled = true; btn.textContent = "Gönderiliyor…";
+  fetch("https://api.telegram.org/bot"+TELEGRAM_TOKEN+"/sendMessage", {
+    method:"POST", headers:{"Content-Type":"application/json"},
+    body: JSON.stringify({chat_id:TELEGRAM_CHAT, text:metin})
+  }).then(function(r){return r.json()}).then(function(j){
+    if (j.ok) { sonuc.style.color="#3fb950"; sonuc.textContent="Alındı, teşekkürler!"; document.getElementById("form").reset(); }
+    else { sonuc.style.color="#f85149"; sonuc.textContent="Gönderilemedi, sonra tekrar dene."; }
+  }).catch(function(){ sonuc.style.color="#f85149"; sonuc.textContent="Bağlantı hatası."; })
+  .finally(function(){ btn.disabled=false; btn.textContent="Gönder"; });
+});
+</script>
+</body>
+</html>
