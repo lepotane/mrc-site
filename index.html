@@ -89,7 +89,7 @@
 <div class="giris">
   <span class="etiket">CloudStream 4.8.0 uyumlu</span>
   <h1>Türkçe dizi, film ve anime <em>tek depoda.</em></h1>
-  <p>57 eklenti, herkese açık, ücretsiz. Aşağıdan depoyu ekle, istediklerini kur. Bozulan olursa bildir, bakalım.</p>
+  <p>58 eklenti, herkese açık, ücretsiz. Aşağıdan depoyu ekle, istediklerini kur. Canlı kanallar, spor, yerli/yabancı dizi ve animeler burada.</p>
 </div>
 
 <section id="kurulum">
@@ -124,12 +124,29 @@
 </section>
 
 <section id="duyuru">
-  <h2>Duyurular</h2>
-  <p class="alt">Bakım listesi otomatik güncellenir.</p>
+  <h2>Duyurular & Yenilikler</h2>
+  <p class="alt">Son yapılan düzeltmeler ve güncellemeler.</p>
   <div class="kutu">
-    <div class="duyuru"><span class="tarih">Bakımda olanlar:</span><br><span id="bakimListe">yükleniyor…</span></div>
-    <div class="duyuru"><span class="tarih">Son düzeltmeler</span><br>AsyaLog ve DDizi düzeltildi — eklentiyi güncelleyip tekrar dene.</div>
-    <div class="duyuru"><span class="tarih">Otomatik takip</span><br>Site adresi değişen eklentiler her 6 saatte bir kontrol edilip sessizce güncelleniyor.</div>
+    <div class="duyuru">
+      <span class="tarih" style="color:var(--vurgu);font-weight:700">YENİ EKLENTİ</span><br>
+      <b>İnatBox BC Eklendi:</b> Canlı TV kanalları, ulusal ve spor yayınları, dizi ve filmler tek çatı altında depomuza eklendi (v1).
+    </div>
+    <div class="duyuru">
+      <span class="tarih" style="color:var(--yesil);font-weight:700">SON DÜZELTMELER</span><br>
+      • <b>DiziPal:</b> Çalışmayan eski domain yerine güncel canlı adrese (2132) taşındı, SSL sertifika sorunu giderildi (v3).<br>
+      • <b>DiziPalOrijinal:</b> 20 dakikalık zaman aşımı ve bağlantı bulunamadı sorunu çözüldü. Şifreli video motoru (PBKDF2 SHA512) ve sunucu referer doğrulaması yenilendi (v4).<br>
+      • <b>DiziBox:</b> Dakikalar süren yavaş açılma sorunu giderildi; arka plandaki gereksiz sayfa istekleri kaldırılarak anlık yükleme sağlandı, Cloudflare bypass'ı yenilendi (v5).<br>
+      • <b>AsyaLog:</b> OK.ru sunucularındaki yeni video akışları ve HLS formatları için çözücü baştan yazıldı (v3).<br>
+      • <b>DDizi:</b> Twitter CDN ve StreamBox sunucularına özel zıt referer başlıkları ayrıştırılarak 2004 hataları çözüldü (v4).
+    </div>
+    <div class="duyuru">
+      <span class="tarih">Bakımda olanlar</span><br>
+      Kalan sorunlu eklentiler sırayla elden geçirilip tek tek açılıyor: <span id="bakimListe">yükleniyor…</span>
+    </div>
+    <div class="duyuru">
+      <span class="tarih">Otomatik Takip Sistemi</span><br>
+      Site adresi değişen veya engellenen eklentiler her 6 saatte bir otonom bot tarafından kontrol edilip kaynak kod ve paketler sessizce güncellenir.
+    </div>
   </div>
 </section>
 
