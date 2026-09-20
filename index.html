@@ -6,19 +6,22 @@
 <title>MRC — CloudStream Türkçe Eklentiler</title>
 <style>
   :root{
-    --zemin:#101014; --kutu:#17171d; --cizgi:#2a2a33;
-    --yazi:#ece7dd; --soluk:#a09a8d; --vurgu:#e8a33d; --vurgu-koyu:#b97a1f;
-    --yesil:#7fc97f; --kirmizi:#e0705f;
+    /* LOGO.png renk skalasi: lacivert zemin + teal/mavi vurgu + altin */
+    --zemin:#0a0f24; --kutu:#111a38; --cizgi:#22305c;
+    --yazi:#e8ecf8; --soluk:#93a0c4;
+    --vurgu:#3ec9c4; --vurgu-koyu:#2a9d99;
+    --mavi:#5e9be5; --mor:#8b5cf6; --altin:#d4b483;
+    --yesil:#3ec9c4; --kirmizi:#e0705f;
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
   body{margin:0;background:var(--zemin);color:var(--yazi);
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
     line-height:1.65}
-  .ust{border-bottom:1px solid var(--cizgi);position:sticky;top:0;background:rgba(16,16,20,.94);z-index:10}
+  .ust{border-bottom:1px solid var(--cizgi);position:sticky;top:0;background:rgba(10,15,36,.94);z-index:10}
   .ust-ic{max-width:980px;margin:0 auto;padding:12px 18px;display:flex;align-items:center;gap:12px}
-  .logo{width:34px;height:34px;border-radius:9px;background:var(--vurgu);color:#141414;
-    display:flex;align-items:center;justify-content:center;font-family:Georgia,serif;font-weight:bold;font-size:20px}
+  img.logo{height:38px;width:auto;display:block;border-radius:8px}
+  .govde-logo{display:block;margin:26px auto 6px;max-width:min(560px,86vw);height:auto;border-radius:14px}
   .ust-ic b{font-size:1.05rem}
   .ust-ic nav{margin-left:auto;display:flex;gap:16px;font-size:.92rem}
   .ust-ic nav a{color:var(--soluk);text-decoration:none}
@@ -80,11 +83,12 @@
 <body>
 
 <div class="ust"><div class="ust-ic">
-  <div class="logo">M</div><b>MRC Eklentileri</b>
-  <nav><a href="#kurulum">Kurulum</a><a href="#durum">Durum</a><a href="#duyuru">Duyurular</a><a href="#bildir">Bildirim</a></nav>
+  <img class="logo" src="logo.png" alt="MRC"><b>MRC Eklentileri</b>
+  <nav><a href="#kurulum">Kurulum</a><a href="#durum">Durum</a><a href="#duyuru">Duyurular</a><a href="#bildir">Bildirim</a><a href="#dmca">DMCA</a></nav>
 </div></div>
 
 <div class="govde">
+<img class="govde-logo" src="logo.png" alt="MRC — CloudStream Eklenti Deposu">
 
 <div class="giris">
   <span class="etiket">CloudStream 4.8.0 uyumlu</span>
@@ -175,6 +179,37 @@
     <button class="gonder" type="submit" id="gonderBtn">Gönder</button>
     <div id="formSonuc"></div>
   </form></div>
+</section>
+
+
+<section id="dmca">
+  <h2>DMCA / Telif Hakkı Bildirimi</h2>
+  <p class="alt">Bu depo hiçbir video, film, dizi veya medya dosyası barındırmaz, sunmaz ve yayınlamaz.</p>
+  <div class="kutu">
+    <p><b>Bağımsızlık beyanı.</b> Biz bir içerik sağlayıcı değiliz. Bu depo yalnızca, herkese açık web sitelerini
+    kullanıcının kendi cihazında görüntülemeyi kolaylaştıran açık kaynak kodlu eklentiler içerir.
+    Hiçbir sunucumuz, CDN'imiz veya akış altyapımız yoktur; video akışı tamamen üçüncü taraf siteler ile
+    kullanıcı arasında gerçekleşir. Hiçbir içeriği kopyalamayız, barındırmayız, yüklemeyiz veya yeniden yayınlamayız.</p>
+
+    <p>Sitelerle hiçbir bağımız, ortaklığımız veya resmi ilişkimiz yoktur. Eklentiler, herhangi bir tarayıcının
+    yapacağı isteği yapan bir istemciden ibarettir. Hiçbir telifli materyalin dağıtımını teşvik etmiyoruz;
+    kullanıcılar içeriği yalnızca yasal hakları olduğu ölçüde izlemekle yükümlüdür.</p>
+
+    <p><b>DMCA bildirimi nereye gönderilmeli?</b> Telif hakkı ihlali iddiaları bize değil, içeriği fiilen barındıran
+    ilgili web sitesinin sahibine, barındırıcısına (hosting) veya alan adı kayıt kuruluşuna yöneltilmelidir.
+    İçeriği elimizde tutmadığımız için kaldıracak bir dosyamız; yayınını kontrol etmediğimiz için erişimi kesecek
+    bir yetkimiz yoktur. Bir eklentinin hedeflediği site kapatılırsa veya içeriğini kaldırırsa, eklenti de
+    otomatik olarak işlevsiz kalır.</p>
+
+    <p><b>Sorumluluk reddi.</b> Eklentiler "olduğu gibi", hiçbir garanti olmaksızın sunulur. Kullanıcı, kendi
+    ülkesindeki yasalara uymakla yükümlüdür. Geliştiriciler, kullanımdan doğabilecek doğrudan veya dolaylı
+    hiçbir zarardan sorumlu tutulamaz. İçerik sağlayıcı sitelerle hiçbir ticari bağımız yoktur; hiçbir reklam,
+    abonelik veya ödeme geliri elde etmiyoruz.</p>
+
+    <p><b>Hak sahipleri için.</b> İhlal barındıran bir <i>site</i> olduğunu düşünüyorsanız lütfen ilgili sitenin
+    barındırıcısına başvurun. Eklenti kodunun kendisi içerik içermez; bu nedenle kaldırılması, ihlal edilen
+    eserin korunmasını sağlamaz.</p>
+  </div>
 </section>
 
 <footer><span>MRC — video barındırmaz, açık sitelere bağlanır.</span><span>Sorun mu var? Yukarıdaki formdan yaz.</span></footer>
