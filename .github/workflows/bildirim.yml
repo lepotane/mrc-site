@@ -1,0 +1,32 @@
+name: Bildirim
+
+# Sitedeki bildirim formu GitHub Issue acar; bu is akisi yeni issue'yu Telegram'a iletir.
+# Gerekli secrets: TELEGRAM_TOKEN, TELEGRAM_CHAT
+
+on:
+  issues:
+    types: [opened, reopened]
+
+jobs:
+  telegram:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Telegram'a ilet
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT: ${{ secrets.TELEGRAM_CHAT }}
+          BASLIK: ${{ github.event.issue.title }}
+          GOVDE: ${{ github.event.issue.body }}
+          LINK: ${{ github.event.issue.html_url }}
+          KULLANICI: ${{ github.event.issue.user.login }}
+        run: |
+          if [ -z "$TELEGRAM_TOKEN" ] || [ -z "$TELEGRAM_CHAT" ]; then
+            echo "TELEGRAM_TOKEN/TELEGRAM_CHAT secret tanimli degil, atlandi."
+            exit 0
+          fi
+          MESAJ=$(printf 'Yeni bildirim\n\n%s\nKullanici: %s\nBildirim: %s\n\n%s' "$BASLIK" "$KULLANICI" "$GOVDE" "$LINK")
+          curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage" \
+            -d "chat_id=${TELEGRAM_CHAT}" \
+            --data-urlencode "text=${MESAJ}" \
+            -d "disable_web_page_preview=true" > /dev/null
+          echo "Telegram'a gonderildi."

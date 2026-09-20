@@ -164,7 +164,7 @@
 
 <section id="bildir">
   <h2>Bildirim gönder</h2>
-  <p class="alt">Kayıt falan yok. Yaz, gönder, biz bakalım. Burada yayınlanmaz.</p>
+  <p class="alt">Yaz, gönder; bildirimin GitHub Issue olarak açılır (GitHub hesabı gerekir) ve bize ulaşır. Burada yayınlanmaz.</p>
   <div class="kutu"><form id="form">
     <label for="tur">Konu</label>
     <select id="tur">
@@ -219,13 +219,6 @@
 
 <script>
 var PLUGINS_URL = "https://raw.githubusercontent.com/lepotane/MRC-builds/builds/plugins.json";
-var TELEGRAM_TOKEN = "8794099684:AAG8Gx10FMydWmjqHUmQq5okHpfleYzWk94";
-var TELEGRAM_CHAT = "5840499361";
-/* Konu bazlı ayrı Telegram başlıkları (Topics) istenirse:
-   1) Telegram'da bir grup aç, Konular'ı (Topics) etkinleştir.
-   2) Botu gruba ekle, şu başlıkları aç: Arıza, Öneri, Şikayet, Diğer.
-   3) Her başlığın ID'sini (Genel=1) aşağıya yaz, TELEGRAM_CHAT'e grup ID'sini (eksi sayılı) yaz. */
-var KONU_BASLIK = {"Arıza / Çalışmayan video":0, "Öneri":0, "Şikayet":0, "Diğer":0};
 var veri = [], filtre = "hepsi";
 
 function icerikAd(tv){
@@ -271,18 +264,17 @@ document.getElementById("form").addEventListener("submit",function(ev){
   ev.preventDefault();
   var sonuc=document.getElementById("formSonuc"), btn=document.getElementById("gonderBtn");
   var tur=document.getElementById("tur").value;
-  var metin="["+tur+"]\nEklenti: "+(document.getElementById("eklenti").value||"-")+"\n"+document.getElementById("mesaj").value;
-  btn.disabled=true; btn.textContent="Gönderiliyor…";
-  var govde={chat_id:TELEGRAM_CHAT,text:metin};
-  var baslik=KONU_BASLIK[tur]||0;
-  if(baslik>0) govde.message_thread_id=baslik;
-  fetch("https://api.telegram.org/bot"+TELEGRAM_TOKEN+"/sendMessage",{
-    method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(govde)
-  }).then(function(r){return r.json()}).then(function(j){
-    if(j.ok){sonuc.style.color="#7fc97f";sonuc.textContent="Aldık, bakacağız. Teşekkürler.";document.getElementById("form").reset()}
-    else{sonuc.style.color="#e0705f";sonuc.textContent="Gönderilemedi, sonra tekrar dene."}
-  }).catch(function(){sonuc.style.color="#e0705f";sonuc.textContent="Bağlantı hatası."})
-  .finally(function(){btn.disabled=false;btn.textContent="Gönder"});
+  var eklenti=document.getElementById("eklenti").value||"-";
+  var mesaj=document.getElementById("mesaj").value;
+  var baslik="[Bildirim] "+tur+" - "+eklenti;
+  var govde="**Konu:** "+tur+"\n**Eklenti:** "+eklenti+"\n\n**A\u00e7\u0131klama:**\n"+mesaj+
+            "\n\n---\n*mrc-site bildirim formundan g\u00f6nderildi.*";
+  var url="https://github.com/lepotane/mrc-site/issues/new?title="+encodeURIComponent(baslik)+
+          "&body="+encodeURIComponent(govde);
+  window.open(url,"_blank");
+  sonuc.style.color="#3ec9c4";
+  sonuc.innerHTML='GitHub sekmesi a\u00e7\u0131ld\u0131. <b>Submit new issue</b> dü\u011fmesine basman yeterli.';
+  btn.disabled=false;
 });
 </script>
 </body>
