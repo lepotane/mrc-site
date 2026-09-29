@@ -204,10 +204,10 @@
   },
   {
     "iconUrl": "https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.birasyadizi.com/&size=16",
-    "fileHash": "sha256-3bc0feab0ff15a9ff44b481758194d4fad363790ced04475fc2db949811841b6",
+    "fileHash": "sha256-ce5eeae4d78de939a067354ba073dd4d6d818c8c94cb1a7327d5ba1de6fd60ae",
     "apiVersion": 1,
     "repositoryUrl": "https://github.com/lepotane/MRC-builds",
-    "fileSize": 26851,
+    "fileSize": 26011,
     "status": 1,
     "language": "tr",
     "authors": [
@@ -216,7 +216,7 @@
     "tvTypes": [
       "AsianDrama"
     ],
-    "version": 3,
+    "version": 4,
     "internalName": "BirAsyaDizi",
     "description": "Asya'nın En Ünlü Dizilerini en yüksek çözünürlükte HD ve kesintisiz izleyin, kaliteli Asya film ve dizilerinin keyfini sürün.",
     "url": "https://raw.githubusercontent.com/lepotane/MRC-builds/builds/BirAsyaDizi.cs3",
@@ -261,7 +261,7 @@
       "Movie",
       "Anime"
     ],
-    "version": 1,
+    "version": 3,
     "internalName": "CizgiVeDizi",
     "description": "Çizgi ve Dizi - çizgi filmler, diziler, animeler ve filmler; reklamsız ve kesintisiz.",
     "url": "https://raw.githubusercontent.com/lepotane/MRC-builds/builds/CizgiVeDizi.cs3",
