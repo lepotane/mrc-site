@@ -246,7 +246,8 @@ function ciz(){
   tb.innerHTML=s||'<tr><td colspan="4">Kayıt yok.</td></tr>';
   document.getElementById("ozet").textContent=veri.length+" eklenti: "+a+" çalışıyor, "+p+" bakımda.";
   var b=veri.filter(function(e){return e.status!==1}).map(function(e){return e.name});
-  document.getElementById("bakimListe").textContent=b.length?b.join(", ")+" ("+b.length+" eklenti)":"şu an bakımda eklenti yok.";
+  var bl=document.getElementById("bakimListe");
+  if(bl){bl.textContent=b.length?b.join(", ")+" ("+b.length+" eklenti)":"şu an bakımda eklenti yok.";}
   var dl=document.getElementById("eklentiListe");
   dl.innerHTML=veri.map(function(e){return "<option value=\""+e.name+"\">"}).join("");
 }
@@ -264,11 +265,21 @@ document.querySelectorAll("[data-kopya]").forEach(function(b){
     else{var ta=document.createElement("textarea");ta.value=t;document.body.appendChild(ta);ta.select();try{document.execCommand("copy");ok()}catch(e){}document.body.removeChild(ta)}
   };
 });
-fetch(PLUGINS_URL + "?t=" + Date.now(), { cache: "no-store" }).then(function(r){return r.json()}).then(function(d){
-  veri=d.sort(function(x,y){return (x.name||"").localeCompare(y.name||"")}); ciz();
-}).catch(function(){
-  document.getElementById("tablo").innerHTML='<tr><td colspan="4">Liste yüklenemedi, sonra tekrar dene.</td></tr>';
-});
+function yukle(deneme){
+  var ctl=null, zaman=null;
+  try{ ctl=new AbortController(); zaman=setTimeout(function(){ctl.abort()},15000); }catch(e){}
+  var sec={ cache: "force-cache" };
+  if(ctl){sec.signal=ctl.signal;}
+  fetch(PLUGINS_URL, sec).then(function(r){return r.json()}).then(function(d){
+    if(zaman){clearTimeout(zaman);}
+    veri=d.sort(function(x,y){return (x.name||"").localeCompare(y.name||"")}); ciz();
+  }).catch(function(){
+    if(zaman){clearTimeout(zaman);}
+    if(deneme<2){ setTimeout(function(){yukle(deneme+1)},2000); return; }
+    document.getElementById("tablo").innerHTML='<tr><td colspan="4">Liste yüklenemedi, sonra tekrar dene.</td></tr>';
+  });
+}
+yukle(0);
 document.getElementById("form").addEventListener("submit",function(ev){
   ev.preventDefault();
   var sonuc=document.getElementById("formSonuc"), btn=document.getElementById("gonderBtn");
