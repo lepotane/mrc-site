@@ -1,0 +1,38 @@
+name: Eklenti listesi senkronu
+
+# Sitedeki plugins.json, MRC-builds deposundan alinan kopyadir.
+# Boylece site veriyi ayni kaynaktan sunar (raw.githubusercontent bazi
+# bolgelerde engellenebildigi icin ilk acilis bos kalabiliyordu).
+# Bu is akisi kopyayi 6 saatte bir tazeler.
+
+on:
+  schedule:
+    - cron: "17 */6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  senkron:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Depoyu al
+        uses: actions/checkout@v4
+
+      - name: Guncel listeyi indir
+        run: |
+          curl -fsSL "https://raw.githubusercontent.com/lepotane/MRC-builds/builds/plugins.json" -o plugins.json
+          python3 -c "import json;d=json.load(open('plugins.json',encoding='utf-8'));print('kayit:',len(d))"
+
+      - name: Degisiklik varsa kaydet
+        run: |
+          if [ -z "$(git status --porcelain plugins.json)" ]; then
+            echo "Degisiklik yok."
+            exit 0
+          fi
+          git config user.name "mrc-bot"
+          git config user.email "mrc-bot@users.noreply.github.com"
+          git add plugins.json
+          git commit -m "Eklenti listesi senkronu"
+          git push
