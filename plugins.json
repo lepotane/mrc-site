@@ -926,10 +926,10 @@
     "name": "MRC-Live"
   },
   {
-    "fileHash": "sha256-3cab7184196a36d85c98e619c9046736e31c8ad8e305d4449dd6b4d6459c7081",
+    "fileHash": "sha256-089b658c71972b5141b8e2449801c2ec4036dbe12d88335f7f19049018fad994",
     "apiVersion": 1,
     "repositoryUrl": "https://github.com/lepotane/MRC-builds",
-    "fileSize": 38421,
+    "fileSize": 38350,
     "status": 3,
     "language": "tr",
     "authors": [
@@ -938,7 +938,7 @@
     "tvTypes": [
       "Movie"
     ],
-    "version": 2,
+    "version": 3,
     "internalName": "MRC-Naughty",
     "description": "MRC-Naughty — 18+ içerik kataloğu (film/video, VIP canlı akış desteğiyle).",
     "url": "https://raw.githubusercontent.com/lepotane/MRC-builds/builds/MRC-Naughty.cs3",
