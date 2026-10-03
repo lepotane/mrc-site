@@ -246,10 +246,10 @@
   },
   {
     "iconUrl": "https://www.google.com/s2/favicons?domain=cizgivedizi.net&sz=%size%",
-    "fileHash": "sha256-ba0a786c1293ce0d1fe88ac8394c9e838116394ca7be425094f08132f600ff29",
+    "fileHash": "sha256-1ebde4ae3541c53c64943e2d6ef98f6c37c260a062aa66f41b0d8098d373b3d6",
     "apiVersion": 1,
     "repositoryUrl": "https://github.com/lepotane/MRC-builds",
-    "fileSize": 34238,
+    "fileSize": 34237,
     "status": 0,
     "language": "tr",
     "authors": [
@@ -261,7 +261,7 @@
       "Movie",
       "Anime"
     ],
-    "version": 2,
+    "version": 3,
     "internalName": "CizgiVeDizi",
     "description": "Çizgi ve Dizi - çizgi filmler, diziler, animeler ve filmler; reklamsız ve kesintisiz.",
     "url": "https://raw.githubusercontent.com/lepotane/MRC-builds/builds/CizgiVeDizi.cs3",
@@ -849,7 +849,7 @@
     "apiVersion": 1,
     "repositoryUrl": "https://github.com/lepotane/MRC-builds",
     "fileSize": 18937,
-    "status": 1,
+    "status": 0,
     "language": "tr",
     "authors": [
       "MRC"
@@ -907,11 +907,10 @@
     "name": "LoveFilm"
   },
   {
-    "iconUrl": "https://img.icons8.com/color/512/tv.png",
-    "fileHash": "sha256-39eca022a02473476c6bfd8c55bde89b11a260b7cec96ff53f04b132ff7614d2",
+    "fileHash": "sha256-c905993e4b1659d85b919dc8597e83b70490ed2961c38170394d617d6ecf5249",
     "apiVersion": 1,
     "repositoryUrl": "https://github.com/lepotane/MRC-builds",
-    "fileSize": 24728,
+    "fileSize": 29020,
     "status": 3,
     "language": "tr",
     "authors": [
@@ -920,14 +919,13 @@
     "tvTypes": [
       "Live"
     ],
-    "version": 1,
+    "version": 2,
     "internalName": "MRC-Live",
     "description": "MRC-Live — canlı TV / IPTV kanalları (Türkiye ve dünya).",
     "url": "https://raw.githubusercontent.com/lepotane/MRC-builds/builds/MRC-Live.cs3",
     "name": "MRC-Live"
   },
   {
-    "iconUrl": "https://img.icons8.com/color/512/18-plus.png",
     "fileHash": "sha256-03d54823decf8d175f2607858fe76611621cbabe208c83bcf866a4a355f4e5c6",
     "apiVersion": 1,
     "repositoryUrl": "https://github.com/lepotane/MRC-builds",
@@ -942,12 +940,11 @@
     ],
     "version": 1,
     "internalName": "MRC-Naughty",
-    "description": "MRC-Naughty — 18+ içerik kataloğu (film/video, canlı akış dahil).",
+    "description": "MRC-Naughty — 18+ içerik kataloğu (film/video, VIP canlı akış desteğiyle).",
     "url": "https://raw.githubusercontent.com/lepotane/MRC-builds/builds/MRC-Naughty.cs3",
-    "name": "MRC-Naughty(+18)"
+    "name": "MRC-Naughty"
   },
   {
-    "iconUrl": "https://img.icons8.com/color/512/movie.png",
     "fileHash": "sha256-5f8f4a13560ee50af35326fa04b208250db84c0563b1b19bfc59e36312c00fe4",
     "apiVersion": 1,
     "repositoryUrl": "https://github.com/lepotane/MRC-builds",
