@@ -923,7 +923,8 @@
     "internalName": "MRC-Live",
     "description": "MRC-Live — canlı TV / IPTV kanalları (Türkiye ve dünya).",
     "url": "https://raw.githubusercontent.com/lepotane/MRC-builds/builds/MRC-Live.cs3",
-    "name": "MRC-Live"
+    "name": "MRC-Live",
+    "iconUrl": "https://raw.githubusercontent.com/lepotane/MRC-builds/builds/icon.png"
   },
   {
     "fileHash": "sha256-089b658c71972b5141b8e2449801c2ec4036dbe12d88335f7f19049018fad994",
@@ -942,13 +943,14 @@
     "internalName": "MRC-Naughty",
     "description": "MRC-Naughty — 18+ içerik kataloğu (film/video, VIP canlı akış desteğiyle).",
     "url": "https://raw.githubusercontent.com/lepotane/MRC-builds/builds/MRC-Naughty.cs3",
-    "name": "MRC-Naughty"
+    "name": "MRC-Naughty",
+    "iconUrl": "https://raw.githubusercontent.com/lepotane/MRC-builds/builds/icon.png"
   },
   {
-    "fileHash": "sha256-f5a661f7c896f23d69c175afa0089e912989ce71716fab98e461950e1fe0f5bd",
+    "fileHash": "sha256-d74b331987ad950c52acbb7241f2343cdbf4c6736de494230193ca608ff083a2",
     "apiVersion": 1,
     "repositoryUrl": "https://github.com/lepotane/MRC-builds",
-    "fileSize": 35833,
+    "fileSize": 140061,
     "status": 3,
     "language": "tr",
     "authors": [
@@ -958,11 +960,12 @@
       "Movie",
       "TvSeries"
     ],
-    "version": 2,
+    "version": 4,
     "internalName": "MRC-Plus",
     "description": "MRC-Plus — çok kaynaklı Türkçe içerik kataloğu (film, dizi).",
     "url": "https://raw.githubusercontent.com/lepotane/MRC-builds/builds/MRC-Plus.cs3",
-    "name": "MRC-Plus"
+    "name": "MRC-Plus",
+    "iconUrl": "https://raw.githubusercontent.com/lepotane/MRC-builds/builds/icon.png"
   },
   {
     "iconUrl": "https://www.google.com/s2/favicons?domain=openani.me&sz=%size%",
