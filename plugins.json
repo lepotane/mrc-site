@@ -907,6 +907,67 @@
     "name": "LoveFilm"
   },
   {
+    "iconUrl": "https://img.icons8.com/color/512/tv.png",
+    "fileHash": "sha256-39eca022a02473476c6bfd8c55bde89b11a260b7cec96ff53f04b132ff7614d2",
+    "apiVersion": 1,
+    "repositoryUrl": "https://github.com/lepotane/MRC-builds",
+    "fileSize": 24728,
+    "status": 3,
+    "language": "tr",
+    "authors": [
+      "MRC"
+    ],
+    "tvTypes": [
+      "Live"
+    ],
+    "version": 1,
+    "internalName": "MRC-Live",
+    "description": "MRC-Live — canlı TV / IPTV kanalları (Türkiye ve dünya).",
+    "url": "https://raw.githubusercontent.com/lepotane/MRC-builds/builds/MRC-Live.cs3",
+    "name": "MRC-Live"
+  },
+  {
+    "iconUrl": "https://img.icons8.com/color/512/18-plus.png",
+    "fileHash": "sha256-03d54823decf8d175f2607858fe76611621cbabe208c83bcf866a4a355f4e5c6",
+    "apiVersion": 1,
+    "repositoryUrl": "https://github.com/lepotane/MRC-builds",
+    "fileSize": 38310,
+    "status": 3,
+    "language": "tr",
+    "authors": [
+      "MRC"
+    ],
+    "tvTypes": [
+      "Movie"
+    ],
+    "version": 1,
+    "internalName": "MRC-Naughty",
+    "description": "MRC-Naughty — 18+ içerik kataloğu (film/video, canlı akış dahil).",
+    "url": "https://raw.githubusercontent.com/lepotane/MRC-builds/builds/MRC-Naughty.cs3",
+    "name": "MRC-Naughty(+18)"
+  },
+  {
+    "iconUrl": "https://img.icons8.com/color/512/movie.png",
+    "fileHash": "sha256-5f8f4a13560ee50af35326fa04b208250db84c0563b1b19bfc59e36312c00fe4",
+    "apiVersion": 1,
+    "repositoryUrl": "https://github.com/lepotane/MRC-builds",
+    "fileSize": 35742,
+    "status": 3,
+    "language": "tr",
+    "authors": [
+      "MRC"
+    ],
+    "tvTypes": [
+      "Movie",
+      "TvSeries"
+    ],
+    "version": 1,
+    "internalName": "MRC-Plus",
+    "description": "MRC-Plus — çok kaynaklı Türkçe içerik kataloğu (film, dizi).",
+    "url": "https://raw.githubusercontent.com/lepotane/MRC-builds/builds/MRC-Plus.cs3",
+    "name": "MRC-Plus"
+  },
+  {
     "iconUrl": "https://www.google.com/s2/favicons?domain=openani.me&sz=%size%",
     "fileHash": "sha256-a5a6fe6925b614a340eec5c74455da60c19148b6aba1d2d0d3ca1f6ae885b8d5",
     "apiVersion": 1,
