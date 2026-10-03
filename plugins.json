@@ -926,10 +926,10 @@
     "name": "MRC-Live"
   },
   {
-    "fileHash": "sha256-03d54823decf8d175f2607858fe76611621cbabe208c83bcf866a4a355f4e5c6",
+    "fileHash": "sha256-3cab7184196a36d85c98e619c9046736e31c8ad8e305d4449dd6b4d6459c7081",
     "apiVersion": 1,
     "repositoryUrl": "https://github.com/lepotane/MRC-builds",
-    "fileSize": 38310,
+    "fileSize": 38421,
     "status": 3,
     "language": "tr",
     "authors": [
@@ -938,17 +938,17 @@
     "tvTypes": [
       "Movie"
     ],
-    "version": 1,
+    "version": 2,
     "internalName": "MRC-Naughty",
     "description": "MRC-Naughty — 18+ içerik kataloğu (film/video, VIP canlı akış desteğiyle).",
     "url": "https://raw.githubusercontent.com/lepotane/MRC-builds/builds/MRC-Naughty.cs3",
     "name": "MRC-Naughty"
   },
   {
-    "fileHash": "sha256-5f8f4a13560ee50af35326fa04b208250db84c0563b1b19bfc59e36312c00fe4",
+    "fileHash": "sha256-f5a661f7c896f23d69c175afa0089e912989ce71716fab98e461950e1fe0f5bd",
     "apiVersion": 1,
     "repositoryUrl": "https://github.com/lepotane/MRC-builds",
-    "fileSize": 35742,
+    "fileSize": 35833,
     "status": 3,
     "language": "tr",
     "authors": [
@@ -958,7 +958,7 @@
       "Movie",
       "TvSeries"
     ],
-    "version": 1,
+    "version": 2,
     "internalName": "MRC-Plus",
     "description": "MRC-Plus — çok kaynaklı Türkçe içerik kataloğu (film, dizi).",
     "url": "https://raw.githubusercontent.com/lepotane/MRC-builds/builds/MRC-Plus.cs3",
