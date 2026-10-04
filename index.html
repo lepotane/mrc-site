@@ -213,7 +213,7 @@ function icerikAd(tv){
 function ciz(){
   var tb=document.getElementById("tablo"), s="", a=0, p=0;
   veri.forEach(function(e){
-    var ok=e.status===1; if(ok)a++;else p++;
+    var ok=(e.status===1||e.status===3); if(ok)a++;else p++;
     if(filtre==="aktif"&&!ok)return; if(filtre==="pasif"&&ok)return;
     s+="<tr><td><b>"+e.name+"</b></td><td>"+icerikAd(e.tvTypes)+"</td><td>v"+e.version+"</td><td>"+
       (ok?'<span class="durum acik">Çalışıyor</span>':'<span class="durum kapali">Bakımda</span>')+"</td></tr>";
@@ -222,7 +222,7 @@ function ciz(){
   document.getElementById("ozet").textContent=veri.length+" eklenti: "+a+" çalışıyor, "+p+" bakımda.";
   var es=document.getElementById("eklentiSayi");
   if(es){es.textContent=veri.length;}
-  var b=veri.filter(function(e){return e.status!==1}).map(function(e){return e.name});
+  var b=veri.filter(function(e){return e.status!==1 && e.status!==3}).map(function(e){return e.name});
   var bl=document.getElementById("bakimListe");
   if(bl){bl.textContent=b.length?b.join(", ")+" ("+b.length+" eklenti)":"şu an bakımda eklenti yok.";}
   var dl=document.getElementById("eklentiListe");
